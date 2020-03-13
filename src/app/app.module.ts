@@ -10,6 +10,8 @@ import { StudentSubjectsComponent } from "./Components/Student/student-subjects/
 import { LoaderComponent } from "./Components/Common/loader/loader.component";
 import { PageNotFoundComponent } from "./Components/Common/page-not-found/page-not-found.component";
 import { LoginComponent } from './Components/Common/login/login.component';
+import { UnauthorizedComponent } from './Components/Common/unauthorized/unauthorized.component';
+import { AboutComponent } from './Components/Common/about/about.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './Components/Common/login/login.component';
     StudentSubjectsComponent,
     LoaderComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    UnauthorizedComponent,
+    AboutComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
