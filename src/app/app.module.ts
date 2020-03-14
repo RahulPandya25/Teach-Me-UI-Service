@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from "./Components/Common/page-not-found/page-n
 import { LoginComponent } from './Components/Common/login/login.component';
 import { UnauthorizedComponent } from './Components/Common/unauthorized/unauthorized.component';
 import { AboutComponent } from './Components/Common/about/about.component';
+import { TutorTestsComponent } from './Components/Tutor/tutor-tests/tutor-tests.component';
+import { StudentTestsComponent } from './Components/Student/student-tests/student-tests.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AboutComponent } from './Components/Common/about/about.component';
     PageNotFoundComponent,
     LoginComponent,
     UnauthorizedComponent,
-    AboutComponent
+    AboutComponent,
+    TutorTestsComponent,
+    StudentTestsComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

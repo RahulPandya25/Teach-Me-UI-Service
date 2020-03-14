@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from "./Components/Common/page-not-found/page-n
 import { LoginComponent } from "./Components/Common/login/login.component";
 import { AboutComponent } from "./Components/Common/about/about.component";
 import { UnauthorizedComponent } from "./Components/Common/unauthorized/unauthorized.component";
+import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.component";
+import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
 
 const routes: Routes = [
   // default route 1
@@ -14,7 +16,11 @@ const routes: Routes = [
   // { path: "", redirectTo: "/tutor/subjects", pathMatch: "full" },
 
   { path: "tutor/subjects", component: TutorSubjectsComponent },
+  { path: "tutor/tests", component: TutorTestsComponent },
+
   { path: "student/subjects", component: StudentSubjectsComponent },
+  { path: "student/tests", component: StudentTestsComponent },
+
   { path: "about", component: AboutComponent },
 
   // unauthorize error page

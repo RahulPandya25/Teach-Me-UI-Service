@@ -1,0 +1,25 @@
+<navbar></navbar>
+<div class="content">
+  <div class="page-heading">
+    <div class="page-title">{{ Subject }} > {{ pageTitle }}</div>
+  </div>
+  <div *ngIf="tests.length && tests.length > 0; else noContent">
+    <div class="card-content">
+      <div class="card emboss raise" *ngFor="let test of tests">
+        <p class="card-title highlight">{{ test.name }}</p>
+        <p class="card-subtitle">
+          {{ test.noOfQuest }} quest &nbsp; | &nbsp; {{ test.totalTime }} min
+        </p>
+        <p class="card-meta">by {{ test.userName }}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noContent>
+    <div class="note">
+      <p class="fade">
+        No Tests Found.
+      </p>
+    </div>
+  </ng-template>
+</div>
+<footer></footer>
