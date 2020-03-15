@@ -165,10 +165,19 @@ body {
       button {
         background-color: var(--icon-clr-1);
         color: white;
+        width: 70%;
+        margin: 0 auto 0;
         border: none;
         transition: all 0.25s ease-in-out;
         &:hover {
           background: #2689c1;
+        }
+
+        &[type="reset"] {
+          background-color: var(--icon-clr-3);
+          &:hover {
+            background-color: #cc3c3c;
+          }
         }
       }
     }

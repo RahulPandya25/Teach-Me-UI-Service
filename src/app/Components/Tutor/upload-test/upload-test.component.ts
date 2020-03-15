@@ -1,11 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormsModule,
-  NgForm,
-  FormControl,
-  FormGroup,
-  Validators
-} from "@angular/forms";
+import { FormsModule, FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-upload-test",
@@ -15,18 +9,36 @@ import {
 export class UploadTestComponent implements OnInit {
   Subject = "Java";
 
-  private fileList: File;
-  selectFile(event: any) {
+  private fileList;
+
+  selectFile(event) {
+    console.log(event);
     this.fileList = event.target.files;
   }
 
-  formElements = new FormGroup({});
+  submitForm(form: any) {
+    // if (
+    //   typeof this.fileList !== "undefined" &&
+    //   this.fileList.this.fileList.length > 0
+    // ) {
+    // let file: File = this.fileList[0];
+    let formData: FormData = form.value;
+    // formData.append("file", file, file.name);
+
+    console.log(formData);
+    // }
+  }
+
+  myFormGroup = new FormGroup({
+    testName: new FormControl(""),
+    cheatSheet: new FormControl(""),
+    totalQuestion: new FormControl(""),
+    totalTime: new FormControl(""),
+    references: new FormControl(""),
+    file: new FormControl("")
+  });
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  submitForm(form: any) {
-    console.log(form);
-  }
 }

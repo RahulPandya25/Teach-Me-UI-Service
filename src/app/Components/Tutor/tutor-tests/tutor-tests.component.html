@@ -2,7 +2,7 @@
 <div class="content">
   <div class="page-heading">
     <div class="page-title">{{ Subject }} > {{ pageTitle }}</div>
-    <a href="" class="create-button">Create new Test</a>
+    <a routerLink="/upload/test" class="create-button">Create new Test</a>
   </div>
   <div *ngIf="tests.length && tests.length > 0; else noContent">
     <div class="card-content">

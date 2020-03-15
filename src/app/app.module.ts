@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -9,12 +10,13 @@ import { TutorSubjectsComponent } from "./Components/Tutor/tutor-subjects/tutor-
 import { StudentSubjectsComponent } from "./Components/Student/student-subjects/student-subjects.component";
 import { LoaderComponent } from "./Components/Common/loader/loader.component";
 import { PageNotFoundComponent } from "./Components/Common/page-not-found/page-not-found.component";
-import { LoginComponent } from './Components/Common/login/login.component';
-import { UnauthorizedComponent } from './Components/Common/unauthorized/unauthorized.component';
-import { AboutComponent } from './Components/Common/about/about.component';
-import { TutorTestsComponent } from './Components/Tutor/tutor-tests/tutor-tests.component';
-import { StudentTestsComponent } from './Components/Student/student-tests/student-tests.component';
-import { UploadTestComponent } from './Components/Tutor/upload-test/upload-test.component';
+import { LoginComponent } from "./Components/Common/login/login.component";
+import { UnauthorizedComponent } from "./Components/Common/unauthorized/unauthorized.component";
+import { AboutComponent } from "./Components/Common/about/about.component";
+import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.component";
+import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
+import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
+import { CreateSubjectComponent } from './Components/Tutor/create-subject/create-subject.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,10 @@ import { UploadTestComponent } from './Components/Tutor/upload-test/upload-test.
     AboutComponent,
     TutorTestsComponent,
     StudentTestsComponent,
-    UploadTestComponent
+    UploadTestComponent,
+    CreateSubjectComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import { UnauthorizedComponent } from "./Components/Common/unauthorized/unauthor
 import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.component";
 import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
 import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
+import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
 
 const routes: Routes = [
   // default route 1
@@ -19,6 +20,7 @@ const routes: Routes = [
   // tutor
   { path: "tutor/subjects", component: TutorSubjectsComponent },
   { path: "tutor/tests", component: TutorTestsComponent },
+  { path: "create/subject", component: CreateSubjectComponent },
   { path: "upload/test", component: UploadTestComponent },
 
   // student
