@@ -8,6 +8,7 @@ import { AboutComponent } from "./Components/Common/about/about.component";
 import { UnauthorizedComponent } from "./Components/Common/unauthorized/unauthorized.component";
 import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.component";
 import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
+import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
 
 const routes: Routes = [
   // default route 1
@@ -15,9 +16,12 @@ const routes: Routes = [
   // default route 2
   // { path: "", redirectTo: "/tutor/subjects", pathMatch: "full" },
 
+  // tutor
   { path: "tutor/subjects", component: TutorSubjectsComponent },
   { path: "tutor/tests", component: TutorTestsComponent },
+  { path: "upload/test", component: UploadTestComponent },
 
+  // student
   { path: "student/subjects", component: StudentSubjectsComponent },
   { path: "student/tests", component: StudentTestsComponent },
 

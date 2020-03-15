@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(240, 240, 240);
   &::-webkit-scrollbar {
     width: 8px;
     background: rgba(0, 0, 0, 0.1);
@@ -126,6 +126,60 @@ body {
 
     &:hover .highlight:before {
       width: 100%;
+    }
+  }
+}
+
+.form-container {
+  padding: 1rem 10rem 2rem;
+  font-size: 1.2rem;
+
+  form {
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-element {
+      margin: 0.5rem 0;
+      display: flex;
+      width: 85%;
+      flex-direction: column;
+
+      input,
+      textarea,
+      button {
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        color: var(--black);
+        font-size: 1rem;
+      }
+      textarea {
+        min-height: 100px;
+      }
+      input[type="File"] {
+        border: none;
+      }
+      button {
+        background-color: var(--icon-clr-1);
+        color: white;
+        border: none;
+        transition: all 0.25s ease-in-out;
+        &:hover {
+          background: #2689c1;
+        }
+      }
+    }
+
+    .row {
+      display: flex;
+      width: 85%;
+
+      .form-element:first-of-type input {
+        margin-right: 1rem;
+      }
     }
   }
 }

@@ -14,6 +14,7 @@ import { UnauthorizedComponent } from './Components/Common/unauthorized/unauthor
 import { AboutComponent } from './Components/Common/about/about.component';
 import { TutorTestsComponent } from './Components/Tutor/tutor-tests/tutor-tests.component';
 import { StudentTestsComponent } from './Components/Student/student-tests/student-tests.component';
+import { UploadTestComponent } from './Components/Tutor/upload-test/upload-test.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StudentTestsComponent } from './Components/Student/student-tests/studen
     UnauthorizedComponent,
     AboutComponent,
     TutorTestsComponent,
-    StudentTestsComponent
+    StudentTestsComponent,
+    UploadTestComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

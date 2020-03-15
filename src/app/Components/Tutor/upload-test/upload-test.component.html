@@ -1,0 +1,97 @@
+<navbar></navbar>
+<div class="content">
+  <div class="page-heading">
+    <div class="page-title">{{ Subject }} > New Test</div>
+  </div>
+  <div class="form-container">
+    <form
+      class="emboss"
+      (onSubmit)="submitForm($event)"
+      enctype="multipart/form-data"
+    >
+      <div class="row">
+        <div class="form-element">
+          <label for="subject-name">Subject</label>
+          <input
+            type="text"
+            name="subject-name"
+            id="subject-name"
+            value="{{ Subject }}"
+            disabled
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="test-name">Test</label>
+          <input
+            type="text"
+            name="test-name"
+            formControlName="test-name"
+            id="test-name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label for="cheat-sheet">Cheat Sheet</label>
+        <textarea
+          type="text"
+          name="cheat-sheet"
+          formControlName="cheat-sheet"
+          id="cheat-sheet"
+          placeholder="Hints for Student..."
+        ></textarea>
+      </div>
+
+      <div class="row">
+        <div class="form-element">
+          <label for="total-question">Total Question</label>
+          <input
+            type="number"
+            name="total-question"
+            formControlName="total-question"
+            id="total-question"
+            required
+          />
+        </div>
+
+        <div class="form-element">
+          <label for="total-time">Total Time</label>
+          <input
+            type="number"
+            name="total-time"
+            formControlName="total-time"
+            id="total-time"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-element">
+        <label for="references">References</label>
+        <input
+          type="url"
+          name="references"
+          formControlName="references"
+          id="references"
+        />
+      </div>
+
+      <div class="form-element">
+        <label for="file">Upload File</label>
+        <input
+          type="file"
+          name="file"
+          formControlName="file"
+          id="file"
+          (change)="selectFile($event)"
+        />
+      </div>
+
+      <div class="form-element">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<footer></footer>
