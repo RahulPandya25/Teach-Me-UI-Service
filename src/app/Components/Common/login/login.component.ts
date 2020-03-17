@@ -18,9 +18,8 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     if (this.showLoginForm) {
-      if (this.uType === "Student")
-        this.router.navigateByUrl("/student/subjects");
-      if (this.uType === "Tutor") this.router.navigateByUrl("/tutor/subjects");
+      if (this.uType === "Student") this.router.navigateByUrl("/student");
+      if (this.uType === "Tutor") this.router.navigateByUrl("/tutor");
       else console.log(this);
     }
   }

@@ -2,11 +2,15 @@
 <div class="content">
   <div class="page-heading">
     <div class="page-title">{{ pageTitle }}</div>
-    <a routerLink="/create/subject" class="create-button">Create new Subject</a>
+    <a routerLink="createSubject" class="create-button">Create new Subject</a>
   </div>
   <div *ngIf="subjects.length && subjects.length > 0; else noContent">
     <div class="card-content">
-      <div class="card emboss raise" *ngFor="let subject of subjects">
+      <div
+        routerLink="tests"
+        class="card emboss raise"
+        *ngFor="let subject of subjects"
+      >
         <p class="card-title highlight">{{ subject.name }}</p>
         <p class="card-subtitle">{{ subject.noOfTests }} tests</p>
       </div>

@@ -10,6 +10,7 @@ import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.
 import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
 import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
+import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
 
 const routes: Routes = [
   // default route 1
@@ -18,14 +19,15 @@ const routes: Routes = [
   // { path: "", redirectTo: "/tutor/subjects", pathMatch: "full" },
 
   // tutor
-  { path: "tutor/subjects", component: TutorSubjectsComponent },
+  { path: "tutor", component: TutorSubjectsComponent },
+  { path: "tutor/createSubject", component: CreateSubjectComponent },
   { path: "tutor/tests", component: TutorTestsComponent },
-  { path: "create/subject", component: CreateSubjectComponent },
-  { path: "upload/test", component: UploadTestComponent },
+  { path: "tutor/tests/uploadTest", component: UploadTestComponent },
 
   // student
-  { path: "student/subjects", component: StudentSubjectsComponent },
+  { path: "student", component: StudentSubjectsComponent },
   { path: "student/tests", component: StudentTestsComponent },
+  { path: "student/tests/takeTest", component: TakeTestComponent },
 
   { path: "about", component: AboutComponent },
 
