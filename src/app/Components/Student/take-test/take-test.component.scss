@@ -81,6 +81,7 @@
             }
             label {
               font-size: 1.1rem;
+              max-width: 90%; // to avoid it pushing the radio button
             }
           }
         }
@@ -107,6 +108,7 @@
           color: white;
           margin: 0 auto 0;
           border: none;
+          cursor: pointer;
           transition: all 0.25s ease-in-out;
           &:hover {
             background: #2689c1;

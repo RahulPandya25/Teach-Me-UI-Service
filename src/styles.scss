@@ -78,6 +78,7 @@ body {
     background: var(--icon-clr-1);
     padding: 0.25rem 0.5rem;
     border-radius: 5px;
+    cursor: pointer;
     transition: all 0.25s ease-in-out;
 
     &:hover {
@@ -102,6 +103,7 @@ body {
     flex-direction: column;
     padding: 0.75em 0;
     border-radius: 5px;
+    cursor: pointer;
     transition: all 0.25s ease-in-out;
 
     .card-title {
@@ -176,6 +178,7 @@ body {
         margin: 0 auto 0;
         border: none;
         transition: all 0.25s ease-in-out;
+        cursor: pointer;
         &:hover {
           background: #2689c1;
         }
@@ -206,6 +209,27 @@ body {
   justify-content: center;
   align-items: center;
   height: 250px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--black);
+  transition: 0.25s all ease-in-out;
+
+  &:not(:checked):hover {
+    background-color: rgba(41, 109, 148, 0.3);
+  }
+
+  &:checked {
+    border: 6px solid rgb(41, 109, 148);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 // ----------------------
