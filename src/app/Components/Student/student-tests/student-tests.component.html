@@ -1,6 +1,7 @@
 <navbar></navbar>
 <div class="content">
   <div class="page-heading">
+    <a routerLink="/student" class="create-button back">Back</a>
     <div class="page-title">{{ Subject }} > {{ pageTitle }}</div>
   </div>
   <div *ngIf="tests.length && tests.length > 0; else noContent">

@@ -62,8 +62,15 @@ body {
   padding: 1rem 6rem 1rem 6rem;
   justify-content: space-between;
   font-size: 20px;
+  position: relative;
   .page-title {
     line-height: 36px;
+  }
+  .back {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
   }
   .create-button {
     text-decoration: none;
