@@ -11,6 +11,7 @@ import { StudentTestsComponent } from "./Components/Student/student-tests/studen
 import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
 import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
+import { ProgressBarComponent } from "./Components/Common/progress-bar/progress-bar.component";
 
 const routes: Routes = [
   // default route 1
@@ -29,7 +30,9 @@ const routes: Routes = [
   { path: "student/tests", component: StudentTestsComponent },
   { path: "student/tests/takeTest", component: TakeTestComponent },
 
+  // misc
   { path: "about", component: AboutComponent },
+  { path: "progress", component: ProgressBarComponent },
 
   // unauthorize error page
   { path: "unauthorized", component: UnauthorizedComponent },

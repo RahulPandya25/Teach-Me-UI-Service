@@ -1,1 +1,69 @@
-<p>take-test works!</p>
+<div class="container">
+  <div class="page-heading">
+    <div class="page-title">{{ subject }} &nbsp;|&nbsp; {{ test }}</div>
+    <a (click)="endTest()" class="create-button">End Test</a>
+  </div>
+  <div class="cheat-sheet">
+    <p class="emboss">{{ cheatSheet }}</p>
+  </div>
+  <div class="form-container">
+    <form *ngIf="!loading" (ngSubmit)="submitForm()">
+      <div class="quest-row">
+        <div class="quest">{{ quest }}</div>
+        <div class="difficulty">{{ difficulty }}</div>
+      </div>
+      <div class="options">
+        <div class="col">
+          <div class="op-set">
+            <input
+              type="radio"
+              name="answer"
+              [(ngModel)]="answer"
+              id="option1"
+              value="option1"
+            />
+            <label for="option1">{{ option1 }}</label>
+          </div>
+          <div class="op-set">
+            <input
+              type="radio"
+              name="answer"
+              [(ngModel)]="answer"
+              id="option3"
+              value="option3"
+            />
+            <label for="option3">{{ option3 }}</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="op-set">
+            <input
+              type="radio"
+              name="answer"
+              [(ngModel)]="answer"
+              id="option2"
+              value="option2"
+            />
+            <label for="option2">{{ option2 }}</label>
+          </div>
+          <div class="op-set">
+            <input
+              type="radio"
+              name="answer"
+              [(ngModel)]="answer"
+              id="option4"
+              value="option4"
+            />
+            <label for="option4">{{ option4 }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="navigate">
+        <p>You can't go back</p>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <app-loader *ngIf="loading"></app-loader>
+  </div>
+  <div class="remaining">{{ questRemaining }} Quest Remaining</div>
+</div>

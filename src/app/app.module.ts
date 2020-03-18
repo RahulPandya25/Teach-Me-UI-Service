@@ -17,7 +17,9 @@ import { TutorTestsComponent } from "./Components/Tutor/tutor-tests/tutor-tests.
 import { StudentTestsComponent } from "./Components/Student/student-tests/student-tests.component";
 import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
-import { TakeTestComponent } from './Components/Student/take-test/take-test.component';
+import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
+import { ProgressBarComponent } from "./Components/Common/progress-bar/progress-bar.component";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -35,9 +37,16 @@ import { TakeTestComponent } from './Components/Student/take-test/take-test.comp
     StudentTestsComponent,
     UploadTestComponent,
     CreateSubjectComponent,
-    TakeTestComponent
+    TakeTestComponent,
+    ProgressBarComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NoopAnimationsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
