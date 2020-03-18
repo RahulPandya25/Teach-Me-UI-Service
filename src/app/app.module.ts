@@ -18,7 +18,6 @@ import { StudentTestsComponent } from "./Components/Student/student-tests/studen
 import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.component";
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
 import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
-import { ProgressBarComponent } from "./Components/Common/progress-bar/progress-bar.component";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -37,8 +36,7 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     StudentTestsComponent,
     UploadTestComponent,
     CreateSubjectComponent,
-    TakeTestComponent,
-    ProgressBarComponent
+    TakeTestComponent
   ],
   imports: [
     BrowserModule,
