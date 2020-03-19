@@ -2,7 +2,7 @@
 <div class="content">
   <div class="page-heading">
     <a routerLink="/tutor" class="create-button back">Back</a>
-    <div class="page-title">{{ Subject }} > {{ pageTitle }}</div>
+    <div class="page-title">{{ subject }} > {{ pageTitle }}</div>
     <a routerLink="uploadTest" class="create-button">Create new Test</a>
   </div>
   <div *ngIf="tests.length && tests.length > 0; else noContent">
