@@ -19,6 +19,7 @@ import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
 import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

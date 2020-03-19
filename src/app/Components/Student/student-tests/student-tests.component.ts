@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { TestService } from "src/app/Services/test.service";
 
 @Component({
   selector: "app-student-tests",
@@ -6,7 +8,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./student-tests.component.scss"]
 })
 export class StudentTestsComponent implements OnInit {
-  Subject = "Java";
+  subject;
+  subjectId;
   pageTitle = "Tests";
 
   tests = [
@@ -22,7 +25,19 @@ export class StudentTestsComponent implements OnInit {
     },
     { name: "Overriding", noOfQuest: 10, totalTime: 15, userName: "Rahul" }
   ];
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(
+    private route: ActivatedRoute,
+    private testService: TestService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.subjectId = params["subjectId"];
+    });
+
+    this.testService.getTestsBySubjectId(this.subjectId).subscribe(response => {
+      console.log(response);
+    });
+  }
 }

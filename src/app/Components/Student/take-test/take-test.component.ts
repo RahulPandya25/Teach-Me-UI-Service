@@ -29,7 +29,7 @@ export class TakeTestComponent implements OnInit {
   }
 
   endTest() {
-    this.router.navigateByUrl("/student/tests");
+    this.router.navigateByUrl("/student");
   }
 
   constructor(private router: Router) {}

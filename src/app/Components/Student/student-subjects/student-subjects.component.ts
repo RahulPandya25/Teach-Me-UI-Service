@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { SubjectService } from "src/app/Services/subject.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-student-subjects',
-  templateUrl: './student-subjects.component.html',
-  styleUrls: ['./student-subjects.component.scss']
+  selector: "app-student-subjects",
+  templateUrl: "./student-subjects.component.html",
+  styleUrls: ["./student-subjects.component.scss"]
 })
 export class StudentSubjectsComponent implements OnInit {
-  subjects = [
-    { name: "Java", noOfTests: 10 },
-    { name: "PHP", noOfTests: 10 },
-    { name: "Python", noOfTests: 10 },
-    { name: ".Net", noOfTests: 10 }
-  ];
+  subjects: any = [];
   pageTitle = "Subjects";
 
-  constructor() { }
+  getTests(subjectId: any) {
+    this.router.navigate(["student/tests"], {
+      queryParams: {
+        subjectId: subjectId
+      }
+    });
+  }
 
-  ngOnInit(): void { }
+  constructor(private subjectService: SubjectService, private router: Router) {}
 
+  ngOnInit(): void {
+    this.subjectService.getAllSubjects().subscribe(response => {
+      console.log(response);
+      this.subjects = response;
+    });
+  }
 }
-  

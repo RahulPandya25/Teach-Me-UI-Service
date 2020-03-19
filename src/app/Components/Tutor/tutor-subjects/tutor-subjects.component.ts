@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { SubjectService } from "src/app/Services/subject.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-tutor-subjects",
@@ -6,15 +8,23 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./tutor-subjects.component.scss"]
 })
 export class TutorSubjectsComponent implements OnInit {
-  subjects = [
-    { name: "Java", noOfTests: 10 },
-    { name: "PHP", noOfTests: 10 },
-    { name: "Python", noOfTests: 10 },
-    { name: ".Net", noOfTests: 10 }
-  ];
+  subjects: any = [];
   pageTitle = "Subjects";
 
-  constructor() {}
+  getTests(subjectId: any) {
+    this.router.navigate(["tutor/tests"], {
+      queryParams: {
+        subjectId: subjectId
+      }
+    });
+  }
 
-  ngOnInit(): void {}
+  constructor(private subjectService: SubjectService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.subjectService.getAllSubjects().subscribe(response => {
+      console.log(response);
+      this.subjects = response;
+    });
+  }
 }
