@@ -2,20 +2,26 @@
 <div class="content">
   <div class="page-heading">
     <a routerLink="/student" class="create-button back">Back</a>
-    <div class="page-title">{{ subject }} > {{ pageTitle }}</div>
+    <div class="page-title">{{ subject.subjectName }} > {{ pageTitle }}</div>
   </div>
-  <div *ngIf="tests.length && tests.length > 0; else noContent">
+  <div
+    *ngIf="
+      subject.testList.length && subject.testList.length > 0;
+      else noContent
+    "
+  >
     <div class="card-content">
       <div
         routerLink="takeTest"
         class="card emboss raise"
-        *ngFor="let test of tests"
+        *ngFor="let test of subject.testList"
       >
         <p class="card-title highlight">{{ test.name }}</p>
         <p class="card-subtitle">
-          {{ test.noOfQuest }} quest &nbsp; | &nbsp; {{ test.totalTime }} min
+          {{ test.numberOfQuest }} quest &nbsp; | &nbsp;
+          {{ test.totalTime }} min
         </p>
-        <p class="card-meta">by {{ test.userName }}</p>
+        <p class="card-meta">by {{ test.user.name }}</p>
       </div>
     </div>
   </div>

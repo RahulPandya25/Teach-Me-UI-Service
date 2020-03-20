@@ -12,45 +12,6 @@ export class TutorTestsComponent implements OnInit {
   subject;
   subjectId;
 
-  tests = [
-    {
-      id: 1,
-      name: "Polymorphism",
-      noOfQuest: 10,
-      totalTime: 15,
-      userName: "Rahul"
-    },
-    { id: 1, name: "Arrays", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
-    {
-      id: 1,
-      name: "Pointers",
-      noOfQuest: 10,
-      totalTime: 15,
-      userName: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Overloading",
-      noOfQuest: 10,
-      totalTime: 15,
-      userName: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Memory Allocaion",
-      noOfQuest: 10,
-      totalTime: 15,
-      userName: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Overriding",
-      noOfQuest: 10,
-      totalTime: 15,
-      userName: "Rahul"
-    }
-  ];
-
   goToStudentList(testId: number) {
     this.router.navigate(["tutor/tests/studentList"], {
       queryParams: {
@@ -71,7 +32,7 @@ export class TutorTestsComponent implements OnInit {
     });
 
     this.testService.getTestsBySubjectId(this.subjectId).subscribe(response => {
-      console.log(response);
+      this.subject = response;
     });
   }
 }
