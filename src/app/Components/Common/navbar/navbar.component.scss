@@ -102,8 +102,10 @@
           color: var(--icon-clr-3);
           font-weight: 600;
         }
+        a {
+          cursor: pointer;
+        }
       }
     }
   }
 }
-

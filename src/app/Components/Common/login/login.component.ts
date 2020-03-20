@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ConstantsService } from "src/app/Services/constants.service";
 
 @Component({
   selector: "app-login",
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     if (this.showLoginForm) {
+      localStorage.setItem("userType", this.uType);
       if (this.uType === "Student") this.router.navigateByUrl("/student");
       if (this.uType === "Tutor") this.router.navigateByUrl("/tutor");
       else console.log(this);
