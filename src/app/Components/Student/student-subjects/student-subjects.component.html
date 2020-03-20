@@ -10,8 +10,8 @@
         class="card emboss raise"
         *ngFor="let subject of subjects"
       >
-        <p class="card-title highlight">{{ subject.name }}</p>
-        <p class="card-subtitle">{{ subject.noOfTests }} tests</p>
+        <p class="card-title highlight">{{ subject.subjectName }}</p>
+        <p class="card-subtitle">{{ subject.testList.length }} tests</p>
       </div>
     </div>
   </div>

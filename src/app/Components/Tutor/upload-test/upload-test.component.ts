@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { FormsModule, FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl } from "@angular/forms";
+import { TestService } from "src/app/Services/test.service";
+import { HttpHeaders } from "@angular/common/http";
 
 @Component({
   selector: "app-upload-test",
@@ -12,21 +14,29 @@ export class UploadTestComponent implements OnInit {
   private fileList;
 
   selectFile(event) {
-    console.log(event);
     this.fileList = event.target.files;
   }
 
   submitForm(form: any) {
-    // if (
-    //   typeof this.fileList !== "undefined" &&
-    //   this.fileList.this.fileList.length > 0
-    // ) {
-    // let file: File = this.fileList[0];
-    let formData: FormData = form.value;
-    // formData.append("file", file, file.name);
+    if (typeof this.fileList !== "undefined" && this.fileList.length > 0) {
+      let file: File = this.fileList[0];
+      let formData: FormData = new FormData();
 
-    console.log(formData);
-    // }
+      formData.append("file", file, file.name);
+      formData.append("testName", form.value.testName);
+      formData.append("cheatSheet", form.value.cheatSheet);
+      formData.append("totalQuestion", form.value.totalQuestion);
+      formData.append("totalTime", form.value.totalTime);
+      formData.append("references", form.value.references);
+
+      console.log(form.value);
+      console.log(file);
+      console.log(formData);
+
+      this.testService.submitTest(formData).subscribe(response => {
+        console.log(response);
+      });
+    }
   }
 
   myFormGroup = new FormGroup({
@@ -38,7 +48,7 @@ export class UploadTestComponent implements OnInit {
     file: new FormControl("")
   });
 
-  constructor() {}
+  constructor(private testService: TestService) {}
 
   ngOnInit(): void {}
 }

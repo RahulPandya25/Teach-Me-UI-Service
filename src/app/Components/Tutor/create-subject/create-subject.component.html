@@ -4,6 +4,12 @@
     <div class="page-title">New Subject</div>
   </div>
   <div class="form-container">
+    <div *ngIf="showErrorMessage" class="errorMsg">
+      <span class="msg">{{ errorMessage }}</span>
+      <button class="closeMsg" (click)="showErrorMessage = !showErrorMessage">
+        x
+      </button>
+    </div>
     <form class="emboss" (ngSubmit)="submitForm()">
       <div class="form-element">
         <label for="subject">Subject</label>

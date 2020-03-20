@@ -8,13 +8,16 @@ import { Router } from "@angular/router";
   styleUrls: ["./create-subject.component.scss"]
 })
 export class CreateSubjectComponent implements OnInit {
+  showErrorMessage = false;
+  errorMessage = "This Subject already exists";
   subject = "";
   submitForm() {
     if (this.subject !== "") {
       console.log(this.subject);
 
       this.subjectService.createSubject(this.subject).subscribe(response => {
-        this.router.navigateByUrl("/tutor");
+        if (response === null) this.showErrorMessage = true;
+        else this.router.navigateByUrl("/tutor");
       });
     }
   }
