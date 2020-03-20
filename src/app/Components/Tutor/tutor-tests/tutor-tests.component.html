@@ -18,7 +18,7 @@
   >
     <div class="card-content">
       <div
-        (click)="goToStudentList(test.id)"
+        (click)="goToStudentList(test.id, subject.subjectId)"
         class="card emboss raise"
         *ngFor="let test of subject.testList"
       >

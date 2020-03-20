@@ -2,11 +2,15 @@
 <div class="content">
   <div class="page-heading">
     <a routerLink="/tutor/tests" class="create-button back">Back</a>
-    <div class="page-title">{{ subject }} > {{ test }} > Student List</div>
+    <div class="page-title">{{ subject.name }} > {{ test }} > Student List</div>
   </div>
   <div class="container">
     <ul>
-      <li *ngFor="let student of studentList" routerLink="/report">
+      <li
+        *ngFor="let student of studentList"
+        routerLink="/report"
+        [queryParams]="{ studentId: student.studentId, testId: testId }"
+      >
         <label>{{ student.name }}</label>
       </li>
     </ul>

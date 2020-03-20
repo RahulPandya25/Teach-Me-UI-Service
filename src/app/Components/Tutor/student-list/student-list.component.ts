@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { SubjectService } from "src/app/Services/subject.service";
 
 @Component({
   selector: "app-student-list",
@@ -8,7 +9,8 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class StudentListComponent implements OnInit {
   testId;
-  subject = "Java";
+  subject;
+  subjectId;
   test = "Polymorphism";
 
   studentList = [
@@ -33,11 +35,20 @@ export class StudentListComponent implements OnInit {
       name: "Rahul"
     }
   ];
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private subjectService: SubjectService
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.testId = params["testId"];
+      this.subjectId = params["subjectId"];
     });
+    this.subjectService
+      .getSubjectBySubjectId(this.subjectId)
+      .subscribe(response => {
+        this.subject = response;
+      });
   }
 }

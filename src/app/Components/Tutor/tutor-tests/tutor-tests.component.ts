@@ -12,9 +12,10 @@ export class TutorTestsComponent implements OnInit {
   subject;
   subjectId;
 
-  goToStudentList(testId: number) {
+  goToStudentList(testId: number, subjectId: number) {
     this.router.navigate(["tutor/tests/studentList"], {
       queryParams: {
+        subjectId: subjectId,
         testId: testId
       }
     });
