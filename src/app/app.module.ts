@@ -21,6 +21,7 @@ import { TakeTestComponent } from "./Components/Student/take-test/take-test.comp
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { ReportComponent } from './Components/Common/report/report.component';
+import { StudentListComponent } from './Components/Tutor/student-list/student-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ReportComponent } from './Components/Common/report/report.component';
     UploadTestComponent,
     CreateSubjectComponent,
     TakeTestComponent,
-    ReportComponent
+    ReportComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,

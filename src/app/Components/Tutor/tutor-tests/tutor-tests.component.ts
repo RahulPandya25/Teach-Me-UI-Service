@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TestService } from "src/app/Services/test.service";
 
 @Component({
@@ -13,22 +13,56 @@ export class TutorTestsComponent implements OnInit {
   subjectId;
 
   tests = [
-    { name: "Polymorphism", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
-    { name: "Arrays", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
-    { name: "Pointers", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
-    { name: "Overloading", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
     {
+      id: 1,
+      name: "Polymorphism",
+      noOfQuest: 10,
+      totalTime: 15,
+      userName: "Rahul"
+    },
+    { id: 1, name: "Arrays", noOfQuest: 10, totalTime: 15, userName: "Rahul" },
+    {
+      id: 1,
+      name: "Pointers",
+      noOfQuest: 10,
+      totalTime: 15,
+      userName: "Rahul"
+    },
+    {
+      id: 1,
+      name: "Overloading",
+      noOfQuest: 10,
+      totalTime: 15,
+      userName: "Rahul"
+    },
+    {
+      id: 1,
       name: "Memory Allocaion",
       noOfQuest: 10,
       totalTime: 15,
       userName: "Rahul"
     },
-    { name: "Overriding", noOfQuest: 10, totalTime: 15, userName: "Rahul" }
+    {
+      id: 1,
+      name: "Overriding",
+      noOfQuest: 10,
+      totalTime: 15,
+      userName: "Rahul"
+    }
   ];
+
+  goToStudentList(testId: number) {
+    this.router.navigate(["tutor/tests/studentList"], {
+      queryParams: {
+        testId: testId
+      }
+    });
+  }
 
   constructor(
     private route: ActivatedRoute,
-    private testService: TestService
+    private testService: TestService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

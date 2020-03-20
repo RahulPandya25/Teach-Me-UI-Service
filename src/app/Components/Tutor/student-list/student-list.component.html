@@ -1,0 +1,15 @@
+<navbar></navbar>
+<div class="content">
+  <div class="page-heading">
+    <a routerLink="/tutor/tests" class="create-button back">Back</a>
+    <div class="page-title">{{ subject }} > {{ test }} > Student List</div>
+  </div>
+  <div class="container">
+    <ul>
+      <li *ngFor="let student of studentList" routerLink="/report">
+        <label>{{ student.name }}</label>
+      </li>
+    </ul>
+  </div>
+</div>
+<footer></footer>

@@ -12,6 +12,7 @@ import { UploadTestComponent } from "./Components/Tutor/upload-test/upload-test.
 import { CreateSubjectComponent } from "./Components/Tutor/create-subject/create-subject.component";
 import { TakeTestComponent } from "./Components/Student/take-test/take-test.component";
 import { ReportComponent } from "./Components/Common/report/report.component";
+import { StudentListComponent } from "./Components/Tutor/student-list/student-list.component";
 
 const routes: Routes = [
   // default route 1
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "tutor/createSubject", component: CreateSubjectComponent },
   { path: "tutor/tests", component: TutorTestsComponent },
   { path: "tutor/tests/uploadTest", component: UploadTestComponent },
+  { path: "tutor/tests/studentList", component: StudentListComponent },
 
   // student
   { path: "student", component: StudentSubjectsComponent },
