@@ -1,7 +1,7 @@
 <navbar></navbar>
 <div class="content">
   <div class="page-heading">
-    <div class="page-title">{{ Subject }} > New Test</div>
+    <div class="page-title">{{ subject.name }} > New Test</div>
   </div>
   <div class="form-container">
     <form
@@ -18,7 +18,7 @@
             type="text"
             name="subjectName"
             id="subject-name"
-            value="{{ Subject }}"
+            value="{{ subject.name }}"
             disabled
           />
         </div>
@@ -96,7 +96,13 @@
           <button type="submit">Submit</button>
         </div>
         <div class="form-element">
-          <button type="reset" routerLink="/tutor/tests">Cancel</button>
+          <button
+            type="reset"
+            routerLink="/tutor/tests"
+            [queryParams]="{ subjectId: subject.subjectId }"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </form>

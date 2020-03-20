@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("userType", this.uType);
       if (this.uType === "Student") this.router.navigateByUrl("/student");
       if (this.uType === "Tutor") this.router.navigateByUrl("/tutor");
-      else console.log(this);
     }
   }
 

@@ -3,7 +3,12 @@
   <div class="page-heading">
     <a routerLink="/tutor" class="create-button back">Back</a>
     <div class="page-title">{{ subject.subjectName }} > {{ pageTitle }}</div>
-    <a routerLink="uploadTest" class="create-button">Create new Test</a>
+    <a
+      routerLink="uploadTest"
+      [queryParams]="{ subjectId: subject.subjectId }"
+      class="create-button"
+      >Create new Test</a
+    >
   </div>
   <div
     *ngIf="

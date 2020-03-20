@@ -11,6 +11,15 @@ export class StudentTestsComponent implements OnInit {
   subject;
   subjectId;
   pageTitle = "Tests";
+  loggedInUser = { userId: 1 };
+
+  showReportOrTakeTest(testId: number) {
+    this.testService
+      .isTestAttemted(testId, this.loggedInUser.userId)
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
 
   constructor(
     private route: ActivatedRoute,

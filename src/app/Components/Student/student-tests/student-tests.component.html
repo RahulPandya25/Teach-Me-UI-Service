@@ -12,7 +12,7 @@
   >
     <div class="card-content">
       <div
-        routerLink="takeTest"
+        (click)="showReportOrTakeTest(test.testId)"
         class="card emboss raise"
         *ngFor="let test of subject.testList"
       >

@@ -12,6 +12,11 @@ export class TestService {
       ConstantsService.BASE_URL + "/subject/test/" + subjectId
     );
   }
+  isTestAttemted(testId, userId) {
+    return this.http.get(
+      ConstantsService.BASE_URL + "/students/test/" + testId + "/" + userId
+    );
+  }
 
   submitTest(formData: any) {
     let httpOptions = {

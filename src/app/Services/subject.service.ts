@@ -8,6 +8,10 @@ import { HttpClient } from "@angular/common/http";
 export class SubjectService {
   private url = ConstantsService.BASE_URL + "/subject";
 
+  getSubjectBySubjectId(subjectId: any) {
+    return this.http.get(this.url + "/" + subjectId);
+  }
+
   getAllSubjects() {
     return this.http.get(this.url + "/all");
   }

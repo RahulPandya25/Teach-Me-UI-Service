@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { TestService } from "src/app/Services/test.service";
 import { HttpHeaders } from "@angular/common/http";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SubjectService } from "src/app/Services/subject.service";
 
 @Component({
   selector: "app-upload-test",
@@ -10,6 +12,9 @@ import { HttpHeaders } from "@angular/common/http";
 })
 export class UploadTestComponent implements OnInit {
   Subject = "Java";
+
+  subject;
+  subjectId;
 
   private fileList;
 
@@ -48,7 +53,21 @@ export class UploadTestComponent implements OnInit {
     file: new FormControl("")
   });
 
-  constructor(private testService: TestService) {}
+  constructor(
+    private testService: TestService,
+    private route: ActivatedRoute,
+    private subjectService: SubjectService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.subjectId = params["subjectId"];
+    });
+    this.subjectService
+      .getSubjectBySubjectId(this.subjectId)
+      .subscribe(response => {
+        console.log(response);
+        this.subject = response;
+      });
+  }
 }
