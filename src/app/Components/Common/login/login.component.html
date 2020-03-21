@@ -26,28 +26,39 @@
     <hr />
 
     <!-- login form -->
-    <form *ngIf="showLoginForm" (ngSubmit)="submitForm()">
+    <form
+      #loginForm="ngForm"
+      [formGroup]="loginFormGroup"
+      *ngIf="showLoginForm"
+      (ngSubmit)="submitForm(loginForm)"
+    >
       <div class="form-element">
         <label for="email">Email</label>
         <input
           type="email"
           name="email"
-          [(ngModel)]="email"
+          formControlName="email"
           id="email"
           required
         />
       </div>
       <div class="form-element">
-        <label for="pwd">Password</label>
-        <input type="password" name="pwd" [(ngModel)]="pwd" id="pwd" required />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          formControlName="password"
+          id="password"
+          required
+        />
       </div>
-      <div class="form-element">
-        <label for="uType">User Type</label>
+      <!-- <div class="form-element">
+        <label for="userType">User Type</label>
         <div class="options">
           <input
             type="radio"
-            name="uType"
-            [(ngModel)]="uType"
+            name="userType"
+            formControlName="userType"
             id="uType-student"
             value="Student"
             checked
@@ -55,14 +66,14 @@
           <label for="uType-student">Student</label>
           <input
             type="radio"
-            name="uType"
-            [(ngModel)]="uType"
+            name="userType"
+            formControlName="userType"
             id="uType-tutor"
             value="Tutor"
           />
           <label for="uType-tutor">Tutor</label>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-element">
         <button type="submit">Submit</button>
@@ -70,47 +81,69 @@
     </form>
 
     <!-- register form -->
-    <form *ngIf="!showLoginForm" (ngSubmit)="submitForm()">
+    <form
+      #registerForm="ngForm"
+      [formGroup]="registerFormGroup"
+      *ngIf="!showLoginForm"
+      (ngSubmit)="submitForm(registerForm)"
+    >
       <div class="form-element">
         <label for="name">Name</label>
-        <input type="text" name="name" [(ngModel)]="name" id="name" required />
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          id="name"
+          required
+        />
       </div>
       <div class="form-element">
         <label for="email">Email</label>
         <input
           type="email"
           name="email"
-          [(ngModel)]="email"
+          formControlName="email"
           id="email"
           required
         />
       </div>
       <div class="form-element">
         <label for="contact">Contact</label>
-        <input type="tel" name="contact" [(ngModel)]="contact" id="contact" />
+        <input
+          type="tel"
+          name="contact"
+          formControlName="contact"
+          id="contact"
+        />
       </div>
       <div class="form-element">
-        <label for="pwd">Password</label>
-        <input type="password" name="pwd" [(ngModel)]="pwd" id="pwd" required />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          formControlName="password"
+          id="password"
+          required
+        />
       </div>
       <div class="form-element">
-        <label for="uType">User Type</label>
+        <label for="userType">User Type</label>
         <div class="options">
           <input
             type="radio"
-            name="uType"
-            [(ngModel)]="uType"
+            name="userType"
+            formControlName="userType"
             id="uType-student"
-            value="Student"
+            value="STUDENT"
             checked
           />
           <label for="uType-student">Student</label>
           <input
             type="radio"
-            name="uType"
-            [(ngModel)]="uType"
+            name="userType"
+            formControlName="userType"
             id="uType-tutor"
-            value="Tutor"
+            value="TUTOR"
           />
           <label for="uType-tutor">Tutor</label>
         </div>
