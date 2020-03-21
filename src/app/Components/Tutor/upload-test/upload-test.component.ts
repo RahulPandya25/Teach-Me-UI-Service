@@ -11,7 +11,7 @@ import { SubjectService } from "src/app/Services/subject.service";
   styleUrls: ["./upload-test.component.scss"]
 })
 export class UploadTestComponent implements OnInit {
-  Subject = "Java";
+  user;
 
   subject;
   subjectId;
@@ -28,6 +28,8 @@ export class UploadTestComponent implements OnInit {
       let formData: FormData = new FormData();
 
       formData.append("file", file, file.name);
+      formData.append("subjectId", this.subjectId);
+      formData.append("userId", this.user.userId);
       formData.append("testName", form.value.testName);
       formData.append("cheatSheet", form.value.cheatSheet);
       formData.append("totalQuestion", form.value.totalQuestion);
@@ -60,6 +62,8 @@ export class UploadTestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem("user"));
+
     this.route.queryParams.subscribe(params => {
       this.subjectId = params["subjectId"];
     });

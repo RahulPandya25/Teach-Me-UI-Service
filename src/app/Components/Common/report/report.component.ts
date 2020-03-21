@@ -10,7 +10,7 @@ export class ReportComponent implements OnInit {
   backLink;
   subject = "Java";
   test = "Polymorphism";
-  userType;
+  user;
   total = "12";
   marks: number = 8.5;
 
@@ -75,9 +75,9 @@ export class ReportComponent implements OnInit {
   ngOnInit(): void {
     console.log(localStorage.getItem("userType"));
 
-    this.userType = localStorage.getItem("userType");
+    this.user = JSON.parse(localStorage.getItem("user"));
     // need subject Id to redeiect to subject page
-    if (this.userType === "Student") this.backLink = "/student";
-    if (this.userType === "Tutor") this.backLink = "/tutor";
+    if (this.user.userType === "STUDENT") this.backLink = "/student";
+    if (this.user.userType === "TUTOR") this.backLink = "/tutor";
   }
 }
