@@ -12,12 +12,12 @@ export class StudentTestsComponent implements OnInit {
   subjectId;
   user;
   pageTitle = "Tests";
-  loggedInUser = { userId: 1 };
 
   showReportOrTakeTest(testId: number) {
     this.testService
-      .isTestAttemted(testId, this.loggedInUser.userId)
+      .isTestAttemted(testId, this.user.userId)
       .subscribe(response => {
+        console.log(response);
         if (response === false) {
           this.router.navigate(["student/tests/takeTest"], {
             queryParams: {
