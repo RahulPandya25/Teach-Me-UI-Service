@@ -12,15 +12,14 @@ export class ReportComponent implements OnInit {
   backLink;
   testId;
   user;
-  total = "12";
-  marks: number = 8.5;
+  marks;
 
-  easyCorrect = 5;
-  mediumCorrect = 5;
-  hardCorrect = 5;
-  easyTotal = 5;
-  mediumTotal = 5;
-  hardTotal = 5;
+  easyCorrect = 0;
+  mediumCorrect = 0;
+  hardCorrect = 0;
+  easyTotal = 0;
+  mediumTotal = 0;
+  hardTotal = 0;
 
   responses;
   questions = [];
@@ -31,7 +30,27 @@ export class ReportComponent implements OnInit {
   ];
 
   findStats() {
-    this.questions.forEach(element => {});
+    this.responses.forEach(element => {
+      if (element.question.difficulty === "EASY") {
+        this.easyTotal++;
+        if (element.response === element.question.answer) this.easyCorrect++;
+      }
+      if (element.question.difficulty === "MEDIUM") {
+        this.mediumTotal++;
+        if (element.response === element.question.answer) this.mediumCorrect++;
+      }
+      if (element.question.difficulty === "HARD") {
+        this.hardTotal++;
+        if (element.response === element.question.answer) this.hardCorrect++;
+      }
+    });
+
+    let totalMarks =
+      this.easyTotal * 1 + this.mediumTotal * 2 + this.hardTotal * 3;
+    let obtainedMarks =
+      this.easyCorrect * 1 + this.mediumCorrect * 2 + this.hardCorrect * 3;
+
+    this.marks = (obtainedMarks / totalMarks) * 10;
   }
 
   constructor(
@@ -55,10 +74,9 @@ export class ReportComponent implements OnInit {
           this.questions.push(element.question);
         });
 
+        this.findStats();
         console.log(response);
       });
-
-    this.findStats();
 
     if (this.user.userType === "STUDENT") this.backLink = "/student";
     if (this.user.userType === "TUTOR") this.backLink = "/tutor";
