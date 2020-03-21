@@ -9,7 +9,7 @@
       <li
         *ngFor="let student of studentList"
         routerLink="/report"
-        [queryParams]="{ studentId: student.studentId, testId: testId }"
+        [queryParams]="{ userId: student.userId, testId: testId }"
       >
         <label>{{ student.name }}</label>
       </li>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SubjectService } from "src/app/Services/subject.service";
+import { TestService } from "src/app/Services/test.service";
 
 @Component({
   selector: "app-student-list",
@@ -13,31 +14,11 @@ export class StudentListComponent implements OnInit {
   subjectId;
   test = "Polymorphism";
 
-  studentList = [
-    {
-      id: 1,
-      name: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Rahul"
-    },
-    {
-      id: 1,
-      name: "Rahul"
-    }
-  ];
+  studentList;
   constructor(
     private route: ActivatedRoute,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    private testService: TestService
   ) {}
 
   ngOnInit(): void {
@@ -45,10 +26,16 @@ export class StudentListComponent implements OnInit {
       this.testId = params["testId"];
       this.subjectId = params["subjectId"];
     });
+
     this.subjectService
       .getSubjectBySubjectId(this.subjectId)
       .subscribe(response => {
         this.subject = response;
       });
+
+    this.testService.getStudentForTestId(this.testId).subscribe(response => {
+      console.log(response);
+      this.studentList = response;
+    });
   }
 }

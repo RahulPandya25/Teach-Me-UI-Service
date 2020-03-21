@@ -7,6 +7,11 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class TestService {
+  getStudentForTestId(testId: any) {
+    return this.http.get(
+      ConstantsService.BASE_URL + "/test/students/" + testId
+    );
+  }
   markThisTestAttempted(userId: any, testId: any) {
     return this.http.get(
       ConstantsService.BASE_URL + "/userTest/insert/" + userId + "/" + testId

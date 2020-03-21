@@ -13,6 +13,7 @@ export class ReportComponent implements OnInit {
   testId;
   user;
   marks;
+  paramUserId;
 
   easyCorrect = 0;
   mediumCorrect = 0;
@@ -62,10 +63,13 @@ export class ReportComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.route.queryParams.subscribe(params => {
       this.testId = params["testId"];
+      this.paramUserId = params["userId"];
     });
 
+    if (this.user.userType === "STUDENT") this.paramUserId = this.user.userId;
+
     this.questionService
-      .fetchReport(this.user.userId, this.testId)
+      .fetchReport(this.paramUserId, this.testId)
       .subscribe(response => {
         this.responses = response;
         this.test = this.responses[0].test;
