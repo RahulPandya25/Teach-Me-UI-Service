@@ -32,7 +32,10 @@ export class TakeTestComponent implements OnInit {
         console.log(response);
       });
 
-    if (this.remainingQuestions === 0) this.endTest();
+    if (this.remainingQuestions === 0) {
+      this.endTest();
+      return;
+    }
 
     console.log("before submitting: " + this.remainingQuestions);
     this.remainingQuestions--;
