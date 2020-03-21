@@ -1,16 +1,18 @@
 <div class="container">
   <div class="page-heading">
-    <div class="page-title">{{ subject }} &nbsp;|&nbsp; {{ test }}</div>
+    <div class="page-title">
+      {{ quest.test.subject.name }} &nbsp;|&nbsp; {{ quest.test.name }}
+    </div>
     <a (click)="endTest()" class="create-button">End Test</a>
   </div>
   <div class="cheat-sheet">
-    <p class="emboss">{{ cheatSheet }}</p>
+    <p class="emboss">{{ quest.test.cheatSheet }}</p>
   </div>
   <div class="form-container">
     <form *ngIf="!loading" (ngSubmit)="submitForm()">
       <div class="quest-row">
-        <div class="quest">{{ quest }}</div>
-        <div class="difficulty">{{ difficulty }}</div>
+        <div class="quest">{{ quest.description }}</div>
+        <div class="difficulty">{{ quest.difficulty }}</div>
       </div>
       <div class="options">
         <div class="op-set">
@@ -19,19 +21,9 @@
             name="answer"
             [(ngModel)]="answer"
             id="option1"
-            value="option1"
+            value="OPTION_1"
           />
-          <label for="option1">{{ option1 }}</label>
-        </div>
-        <div class="op-set">
-          <input
-            type="radio"
-            name="answer"
-            [(ngModel)]="answer"
-            id="option3"
-            value="option3"
-          />
-          <label for="option3">{{ option3 }}</label>
+          <label for="option1">{{ quest.option_1 }}</label>
         </div>
         <div class="op-set">
           <input
@@ -39,9 +31,19 @@
             name="answer"
             [(ngModel)]="answer"
             id="option2"
-            value="option2"
+            value="OPTION_2"
           />
-          <label for="option2">{{ option2 }}</label>
+          <label for="option2">{{ quest.option_2 }}</label>
+        </div>
+        <div class="op-set">
+          <input
+            type="radio"
+            name="answer"
+            [(ngModel)]="answer"
+            id="option3"
+            value="OPTION_3"
+          />
+          <label for="option3">{{ quest.option_3 }}</label>
         </div>
         <div class="op-set">
           <input
@@ -49,9 +51,9 @@
             name="answer"
             [(ngModel)]="answer"
             id="option4"
-            value="option4"
+            value="OPTION_4"
           />
-          <label for="option4">{{ option4 }}</label>
+          <label for="option4">{{ quest.option_4 }}</label>
         </div>
       </div>
       <div class="navigate">
@@ -61,5 +63,5 @@
     </form>
     <app-loader *ngIf="loading"></app-loader>
   </div>
-  <div class="remaining">{{ questRemaining }} Quest Remaining</div>
+  <div class="remaining">{{ remainingQuestions }} Quest Remaining</div>
 </div>

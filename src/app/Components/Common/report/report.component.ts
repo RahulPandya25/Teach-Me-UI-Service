@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ConstantsService } from "src/app/Services/constants.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { QuestionService } from "src/app/Services/question.service";
 
 @Component({
   selector: "app-report",
@@ -8,6 +10,7 @@ import { ConstantsService } from "src/app/Services/constants.service";
 })
 export class ReportComponent implements OnInit {
   backLink;
+  testId;
   subject = "Java";
   test = "Polymorphism";
   user;
@@ -70,13 +73,23 @@ export class ReportComponent implements OnInit {
     { link: "https://spring.io/projects/spring-boot" }
   ];
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private questionService: QuestionService
+  ) {}
 
   ngOnInit(): void {
-    console.log(localStorage.getItem("userType"));
-
     this.user = JSON.parse(localStorage.getItem("user"));
-    // need subject Id to redeiect to subject page
+    this.route.queryParams.subscribe(params => {
+      this.testId = params["testId"];
+    });
+
+    this.questionService
+      .fetchReport(this.user.userId, this.testId)
+      .subscribe(response => {
+        console.log(response);
+      });
+
     if (this.user.userType === "STUDENT") this.backLink = "/student";
     if (this.user.userType === "TUTOR") this.backLink = "/tutor";
   }

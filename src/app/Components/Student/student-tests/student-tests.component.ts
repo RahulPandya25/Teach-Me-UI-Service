@@ -21,7 +21,8 @@ export class StudentTestsComponent implements OnInit {
         if (response === false) {
           this.router.navigate(["student/tests/takeTest"], {
             queryParams: {
-              testId: testId
+              testId: testId,
+              subjectId: this.subjectId
             }
           });
         } else if (response === true) {

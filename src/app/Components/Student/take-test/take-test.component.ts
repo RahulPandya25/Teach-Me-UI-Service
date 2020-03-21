@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { QuestionService } from "src/app/Services/question.service";
+import { TestService } from "src/app/Services/test.service";
+import { isUndefined } from "util";
 
 @Component({
   selector: "app-take-test",
@@ -7,32 +10,76 @@ import { Router } from "@angular/router";
   styleUrls: ["./take-test.component.scss"]
 })
 export class TakeTestComponent implements OnInit {
-  subject = "Java";
-  test = "Polymorphism";
-  cheatSheet =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-  quest =
-    "What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?What is Polymorphism?";
-  difficulty = "Medium";
-  questRemaining = 8;
-  option1 = "OPTION 1OPTION 1OPTION 1OPTION 1OPTION 1OPTION 1OPTION 1";
-  option2 = "OPTION 2OPTION 2OPTION 2OPTION 2";
-  option3 = "OPTION 3OPTION 3OPTION 3";
-  option4 =
-    "OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4 OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4OPTION 4";
+  user;
+  testId;
+  subjectId;
+  subject;
 
   answer;
+  quest;
   loading = false;
+  totalQuestions: number;
+  remainingQuestions: number = -1;
 
   submitForm() {
+    if (isUndefined(this.answer)) this.answer = "NONE";
     console.log(this.answer);
+
+    // submit ans
+    this.questionService
+      .submitResponse(this.user.userId, this.quest.questionId, this.answer)
+      .subscribe(response => {
+        console.log(response);
+      });
+
+    if (this.remainingQuestions === 0) this.endTest();
+
+    console.log("before submitting: " + this.remainingQuestions);
+    this.remainingQuestions--;
+    this.fetchNextQuestion();
   }
 
   endTest() {
     this.router.navigateByUrl("/student");
   }
 
-  constructor(private router: Router) {}
+  fetchNextQuestion() {
+    this.loading = true;
 
-  ngOnInit(): void {}
+    this.questionService
+      .fetchNextQuestion(this.user.userId, this.testId)
+      .subscribe(response => {
+        console.log(response);
+        this.quest = response;
+        this.totalQuestions = this.quest.test.numberOfQuest;
+        if (this.remainingQuestions === -1)
+          this.remainingQuestions = this.totalQuestions - 1;
+      });
+
+    this.loading = false;
+  }
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private questionService: QuestionService,
+    private testService: TestService
+  ) {}
+
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem("user"));
+
+    this.route.queryParams.subscribe(params => {
+      this.subjectId = params["subjectId"];
+      this.testId = params["testId"];
+    });
+
+    this.testService
+      .markThisTestAttempted(this.user.userId, this.testId)
+      .subscribe(response => {
+        console.log(response);
+      });
+
+    this.fetchNextQuestion();
+  }
 }
