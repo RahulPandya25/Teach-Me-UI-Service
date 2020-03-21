@@ -2,10 +2,12 @@
 <div class="content">
   <div class="page-heading">
     <a routerLink="{{ backLink }}" class="create-button back">Back</a>
-    <div class="page-title">{{ subject }} > {{ test }} > Report</div>
+    <div class="page-title">
+      {{ test.subject.name }} > {{ test.name }} > Report
+    </div>
   </div>
   <div class="score">
-    <div class="total-quest">{{ total }} Questions</div>
+    <div class="total-quest">{{ test.numberOfQuest }} Questions</div>
     <div class="marks">
       Score:
       <span
@@ -38,55 +40,55 @@
   <div class="questionnaire">
     <div class="title">Questions</div>
     <div class="questions">
-      <div *ngFor="let question of questions" class="question">
+      <div *ngFor="let response of responses" class="question">
         <div class="quest-row">
-          <div class="quest">{{ question.desc }}</div>
-          <div class="difficulty">{{ question.difficulty }}</div>
+          <div class="quest">{{ response.question.description }}</div>
+          <div class="difficulty">{{ response.question.difficulty }}</div>
         </div>
         <div class="options">
           <div
             class="option1"
             [ngClass]="{
-              correct: question.answer === 'option1',
+              correct: response.question.answer === 'OPTION_1',
               incorrect:
-                question.answer !== question.response &&
-                question.response === 'option1'
+                response.question.answer !== response.response &&
+                response.response === 'OPTION_1'
             }"
           >
-            {{ question.option1 }}
+            {{ response.question.option_1 }}
           </div>
           <div
             class="option2"
             [ngClass]="{
-              correct: question.answer === 'option2',
+              correct: response.question.answer === 'OPTION_2',
               incorrect:
-                question.answer !== question.response &&
-                question.response === 'option2'
+                response.question.answer !== response.response &&
+                response.response === 'OPTION_2'
             }"
           >
-            {{ question.option2 }}
+            {{ response.question.option_2 }}
           </div>
           <div
             class="option3"
             [ngClass]="{
-              correct: question.answer === 'option3',
+              correct: response.question.answer === 'OPTION_3',
               incorrect:
-                question.answer !== question.response &&
-                question.response === 'option3'
+                response.question.answer !== response.response &&
+                response.response === 'OPTION_3'
             }"
           >
-            {{ question.option3 }}
+            {{ response.question.option_3 }}
           </div>
           <div
             class="option4"
             [ngClass]="{
-              correct: question.answer === 'option4',
+              correct: response.question.answer === '4',
               incorrect:
-                question.answer !== question.response &&
-                question.response === 'option4'
+                response.question.answer !== response.response &&
+                response.response === 'OPTION_4'
             }"
           >
-            {{ question.option4 }}
+            {{ response.question.option_4 }}
           </div>
         </div>
       </div>

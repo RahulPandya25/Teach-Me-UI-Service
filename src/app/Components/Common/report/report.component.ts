@@ -11,8 +11,6 @@ import { QuestionService } from "src/app/Services/question.service";
 export class ReportComponent implements OnInit {
   backLink;
   testId;
-  subject = "Java";
-  test = "Polymorphism";
   user;
   total = "12";
   marks: number = 8.5;
@@ -24,54 +22,17 @@ export class ReportComponent implements OnInit {
   mediumTotal = 5;
   hardTotal = 5;
 
-  questions = [
-    {
-      desc: "What is Polymorphism?",
-      option1: "option1",
-      option2: "option2",
-      option3: "option3",
-      option4: "option4",
-      difficulty: "Hard",
-      answer: "option1",
-      response: "option1"
-    },
-    {
-      desc: "What is Polymorphism?",
-      option1: "option1",
-      option2: "option2",
-      option3: "option3",
-      option4: "option4",
-      difficulty: "Medium",
-      answer: "option1",
-      response: "option2"
-    },
-    {
-      desc: "What is Polymorphism?",
-      option1: "option1",
-      option2: "option2",
-      option3: "option3",
-      option4: "option4",
-      difficulty: "Medium",
-      answer: "option1",
-      response: "option3"
-    },
-    {
-      desc: "What is Polymorphism?",
-      option1: "option1",
-      option2: "option2",
-      option3:
-        " option3 option3 option3 option3 option3 option3 option3 option3 voption3 option3 option3 option3 option3 option3 option3 option3 option3 v v option3 v  vvoption3 option3",
-      option4: "option4",
-      difficulty: "Medium",
-      answer: "option1",
-      response: "option4"
-    }
-  ];
+  responses;
+  questions = [];
 
   references = [
     { link: "https://angular.io/" },
     { link: "https://spring.io/projects/spring-boot" }
   ];
+
+  findStats() {
+    this.questions.forEach(element => {});
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -87,8 +48,17 @@ export class ReportComponent implements OnInit {
     this.questionService
       .fetchReport(this.user.userId, this.testId)
       .subscribe(response => {
+        this.responses = response;
+        this.test = this.responses[0].test;
+
+        this.responses.forEach(element => {
+          this.questions.push(element.question);
+        });
+
         console.log(response);
       });
+
+    this.findStats();
 
     if (this.user.userType === "STUDENT") this.backLink = "/student";
     if (this.user.userType === "TUTOR") this.backLink = "/tutor";
