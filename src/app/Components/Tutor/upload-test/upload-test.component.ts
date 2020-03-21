@@ -42,6 +42,11 @@ export class UploadTestComponent implements OnInit {
 
       this.testService.submitTest(formData).subscribe(response => {
         console.log(response);
+        this.router.navigate(["tutor/tests"], {
+          queryParams: {
+            subjectId: this.subjectId
+          }
+        });
       });
     }
   }
@@ -58,7 +63,8 @@ export class UploadTestComponent implements OnInit {
   constructor(
     private testService: TestService,
     private route: ActivatedRoute,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
