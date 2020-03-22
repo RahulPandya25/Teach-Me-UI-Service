@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ConstantsService } from "src/app/Services/constants.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { QuestionService } from "src/app/Services/question.service";
 
 @Component({
