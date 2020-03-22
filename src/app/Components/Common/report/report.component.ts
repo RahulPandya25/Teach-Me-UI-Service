@@ -10,6 +10,7 @@ import { QuestionService } from "src/app/Services/question.service";
 })
 export class ReportComponent implements OnInit {
   backLink;
+  test;
   testId;
   user;
   marks;
