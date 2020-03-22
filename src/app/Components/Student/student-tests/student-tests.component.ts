@@ -50,6 +50,14 @@ export class StudentTestsComponent implements OnInit {
 
     this.testService.getTestsBySubjectId(this.subjectId).subscribe(response => {
       this.subject = response;
+      this.subject.testList.forEach(element => {
+        this.testService
+          .isTestAttemted(element.testId, this.user.userId)
+          .subscribe(response => {
+            if (response) element.attempted = true;
+            else element.attempted = false;
+          });
+      });
     });
   }
 }
