@@ -33,7 +33,8 @@ export class TakeTestComponent implements OnInit {
       });
 
     if (this.remainingQuestions === 0) {
-      this.endTest();
+      window.alert("Your test is successfully submitted!");
+      this.router.navigateByUrl("/student");
       return;
     }
 
@@ -43,7 +44,8 @@ export class TakeTestComponent implements OnInit {
   }
 
   endTest() {
-    this.router.navigateByUrl("/student");
+    if (window.confirm("Do you really want to end the test?"))
+      this.router.navigateByUrl("/student");
   }
 
   fetchNextQuestion() {
