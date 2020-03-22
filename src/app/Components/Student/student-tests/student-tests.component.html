@@ -4,12 +4,7 @@
     <a routerLink="/student" class="create-button back">Back</a>
     <div class="page-title">{{ subject.subjectName }} > {{ pageTitle }}</div>
   </div>
-  <div
-    *ngIf="
-      subject.testList.length && subject.testList.length > 0;
-      else noContent
-    "
-  >
+  <div *ngIf="subject.testList && subject.testList.length > 0; else noContent">
     <div class="card-content">
       <div
         (click)="showReportOrTakeTest(test.testId)"

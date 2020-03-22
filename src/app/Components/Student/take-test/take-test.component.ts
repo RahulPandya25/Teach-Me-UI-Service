@@ -56,12 +56,11 @@ export class TakeTestComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
         this.quest = response;
+        this.loading = false;
         this.totalQuestions = this.quest.test.numberOfQuest;
         if (this.remainingQuestions === -1)
           this.remainingQuestions = this.totalQuestions - 1;
       });
-
-    this.loading = false;
   }
 
   constructor(
