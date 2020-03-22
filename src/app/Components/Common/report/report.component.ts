@@ -26,8 +26,11 @@ export class ReportComponent implements OnInit {
   questions = [];
 
   references = [
-    { link: "https://angular.io/" },
-    { link: "https://spring.io/projects/spring-boot" }
+    { link: "https://www.geeksforgeeks.org/polymorphism-in-java/" },
+    { link: "https://www.w3schools.com/java/java_polymorphism.asp" },
+    {
+      link: "https://www.tutorialspoint.com/java/java_polymorphism.htm"
+    }
   ];
 
   findStats() {
