@@ -48,11 +48,11 @@ export class ReportComponent implements OnInit {
     });
 
     let totalMarks =
-      this.easyTotal * 1 + this.mediumTotal * 2 + this.hardTotal * 3;
+      this.easyTotal * 1 + this.mediumTotal * 1.5 + this.hardTotal * 2;
     let obtainedMarks =
-      this.easyCorrect * 1 + this.mediumCorrect * 2 + this.hardCorrect * 3;
+      this.easyCorrect * 1 + this.mediumCorrect * 1.5 + this.hardCorrect * 2;
 
-    this.marks = (obtainedMarks / totalMarks) * 10;
+    this.marks = Math.round((obtainedMarks / totalMarks) * 100) / 10;
   }
 
   constructor(
