@@ -42,7 +42,18 @@
     <div class="questions">
       <div *ngFor="let response of responses" class="question">
         <div class="quest-row">
-          <div class="quest">{{ response.question.description }}</div>
+          <div
+            class="quest"
+            [ngClass]="{
+              unattempted: !response.response,
+              'incorrect-response':
+                response.response &&
+                response.question.answer !== response.response,
+              'correct-response': response.question.answer === response.response
+            }"
+          >
+            {{ response.question.description }}
+          </div>
           <div class="difficulty">{{ response.question.difficulty }}</div>
         </div>
         <div class="options">
