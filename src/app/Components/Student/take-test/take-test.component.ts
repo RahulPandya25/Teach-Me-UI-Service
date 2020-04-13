@@ -67,9 +67,8 @@ export class TakeTestComponent implements OnInit {
   resetRadios() {
     // unchecking radio buttons
     for (let i = 1; i <= 4; i++) {
-      (document.getElementById(
-        "option" + i
-      ) as HTMLInputElement).checked = false;
+      var radio = document.getElementById("option" + i) as HTMLInputElement;
+      if (radio.checked) radio.checked = false;
     }
   }
 
