@@ -7,7 +7,7 @@ import { isUndefined } from "util";
 @Component({
   selector: "app-take-test",
   templateUrl: "./take-test.component.html",
-  styleUrls: ["./take-test.component.scss"]
+  styleUrls: ["./take-test.component.scss"],
 })
 export class TakeTestComponent implements OnInit {
   user;
@@ -28,7 +28,7 @@ export class TakeTestComponent implements OnInit {
     // submit ans
     this.questionService
       .submitResponse(this.user.userId, this.quest.questionId, this.answer)
-      .subscribe(response => {
+      .subscribe((response) => {
         console.log(response);
       });
 
@@ -49,18 +49,28 @@ export class TakeTestComponent implements OnInit {
   }
 
   fetchNextQuestion() {
-    this.loading = true;
+    // this.loading = true;
 
     this.questionService
       .fetchNextQuestion(this.user.userId, this.testId)
-      .subscribe(response => {
+      .subscribe((response) => {
         console.log(response);
-        this.quest = response;
-        this.loading = false;
+        // this.loading = false;
+        this.quest = Object.assign(response);
         this.totalQuestions = this.quest.test.numberOfQuest;
         if (this.remainingQuestions === -1)
           this.remainingQuestions = this.totalQuestions - 1;
+        this.resetRadios();
       });
+  }
+
+  resetRadios() {
+    // unchecking radio buttons
+    for (let i = 1; i <= 4; i++) {
+      (document.getElementById(
+        "option" + i
+      ) as HTMLInputElement).checked = false;
+    }
   }
 
   constructor(
@@ -73,14 +83,14 @@ export class TakeTestComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("user"));
 
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.subjectId = params["subjectId"];
       this.testId = params["testId"];
     });
 
     this.testService
       .markThisTestAttempted(this.user.userId, this.testId)
-      .subscribe(response => {
+      .subscribe((response) => {
         console.log(response);
       });
 
