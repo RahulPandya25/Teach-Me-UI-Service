@@ -22,6 +22,10 @@ export class TakeTestComponent implements OnInit {
   remainingQuestions: number = -1;
 
   submitForm() {
+    var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+
     if (isUndefined(this.answer)) this.answer = "NONE";
     console.log(this.answer);
 
@@ -44,6 +48,10 @@ export class TakeTestComponent implements OnInit {
   }
 
   endTest() {
+    var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+
     if (window.confirm("Do you really want to end the test?"))
       this.router.navigateByUrl("/student");
   }
@@ -70,6 +78,11 @@ export class TakeTestComponent implements OnInit {
       var radio = document.getElementById("option" + i) as HTMLInputElement;
       if (radio.checked) radio.checked = false;
     }
+  }
+
+  stopBubbling(e) {
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
   }
 
   constructor(

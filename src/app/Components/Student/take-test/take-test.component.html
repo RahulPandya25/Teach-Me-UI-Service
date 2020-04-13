@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (click)="resetRadios()">
   <div class="page-heading">
     <div class="page-title">
       {{ quest.test.subject.name }} &nbsp;|&nbsp; {{ quest.test.name }}
@@ -14,7 +14,7 @@
         <div class="quest">{{ quest.description }}</div>
         <div class="difficulty">{{ quest.difficulty }}</div>
       </div>
-      <div class="options">
+      <div class="options" (click)="stopBubbling($event)">
         <div class="op-set">
           <input
             type="radio"
