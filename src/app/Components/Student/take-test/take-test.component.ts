@@ -58,7 +58,7 @@ export class TakeTestComponent implements OnInit {
 
   fetchNextQuestion() {
     // this.loading = true;
-
+    this.answer = "NONE";
     this.questionService
       .fetchNextQuestion(this.user.userId, this.testId)
       .subscribe((response) => {

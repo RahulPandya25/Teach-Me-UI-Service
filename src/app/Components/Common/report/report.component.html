@@ -45,9 +45,9 @@
           <div
             class="quest"
             [ngClass]="{
-              unattempted: !response.response,
+              unattempted: response.response === 'NONE',
               'incorrect-response':
-                response.response &&
+                response.response !== 'NONE' &&
                 response.question.answer !== response.response,
               'correct-response': response.question.answer === response.response
             }"
