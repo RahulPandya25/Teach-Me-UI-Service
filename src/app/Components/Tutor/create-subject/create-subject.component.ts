@@ -5,20 +5,25 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-create-subject",
   templateUrl: "./create-subject.component.html",
-  styleUrls: ["./create-subject.component.scss"]
+  styleUrls: ["./create-subject.component.scss"],
 })
 export class CreateSubjectComponent implements OnInit {
   showErrorMessage = false;
-  errorMessage = "This Subject already exists";
+  errorMessage = "";
   subject = "";
   submitForm() {
     if (this.subject !== "") {
       console.log(this.subject);
 
-      this.subjectService.createSubject(this.subject).subscribe(response => {
-        if (response === null) this.showErrorMessage = true;
-        else this.router.navigateByUrl("/tutor");
+      this.subjectService.createSubject(this.subject).subscribe((response) => {
+        if (response === null) {
+          this.errorMessage = "This Subject already exists";
+          this.showErrorMessage = true;
+        } else this.router.navigateByUrl("/tutor");
       });
+    } else {
+      this.showErrorMessage = true;
+      this.errorMessage = "Please enter the name of subject";
     }
   }
 

@@ -71,6 +71,7 @@
     text-align: center;
     font-size: 1.5rem;
     padding: 0.5rem;
+    margin-bottom: 1em;
   }
   .questions {
     display: flex;
@@ -78,7 +79,7 @@
     align-items: center;
     .question {
       width: 80%;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       .quest-row {
         display: flex;
         justify-content: space-between;
@@ -96,6 +97,42 @@
             height: 100%;
             font-size: 1.2em;
             font-weight: 600;
+          }
+        }
+
+        .unattempted,
+        .correct-response,
+        .incorrect-response {
+          position: relative;
+          font-size: 1.2em;
+
+          &::after {
+            position: absolute;
+            top: -1.25em;
+            left: -1.75rem;
+            height: 1.2em;
+            font-size: 1em;
+            font-weight: 600;
+
+            transform-origin: center;
+          }
+        }
+        .unattempted {
+          &::after {
+            content: "Not Attempted";
+            color: #f06145;
+          }
+        }
+        .correct-response {
+          &::after {
+            content: "Correct";
+            color: #3ec037;
+          }
+        }
+        .incorrect-response {
+          &::after {
+            content: "Incorrect";
+            color: #f06145;
           }
         }
         .difficulty {
